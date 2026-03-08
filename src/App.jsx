@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import PostList from "./components/PostList";
 import UserCard from "./components/UserCard";
 import AddPostForm from "./components/AddPostForm";
+import PostCount from "./components/PostCount";
 
 const INITIAL_POSTS = [
   {
