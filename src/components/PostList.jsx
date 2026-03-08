@@ -4,11 +4,19 @@ import PostCount from "./PostCount"
 
 function PostList({ posts, favorites, onToggleFavorite }) {
   const [search, setSearch] = useState("");
+  const [sortOrder, setSortOrder] = useState("newest");
 
   // กรองโพสต์ตาม search
   const filtered = posts.filter((post) =>
-    post.title.toLowerCase().includes(search.toLowerCase()),
-  );
+    post.title.toLowerCase().includes(search.toLowerCase())
+   )
+  .sort((a, b) => {
+    if (sortOrder === "newest") {
+      return b.id - a.id;
+    } else {
+      return a.id - b.id;
+    }
+  });
 
   return (
     <div>
@@ -47,6 +55,19 @@ function PostList({ posts, favorites, onToggleFavorite }) {
           ไม่พบโพสต์ที่ค้นหา
         </p>
       )}
+
+      <div style={{ marginBottom: "1rem" }}>
+  <button onClick={() => setSortOrder("newest")}>
+    ใหม่สุด
+  </button>
+
+  <button
+    style={{ marginLeft: "10px" }}
+    onClick={() => setSortOrder("oldest")}
+  >
+    เก่าสุด
+  </button>
+</div>
 
       {/* แสดงรายการโพสต์ */}
       {filtered.map((post) => (
