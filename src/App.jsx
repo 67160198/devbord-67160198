@@ -3,7 +3,6 @@ import Navbar from "./components/Navbar";
 import PostList from "./components/PostList";
 import UserCard from "./components/UserCard";
 import AddPostForm from "./components/AddPostForm";
-import PostCount from "./components/PostCount";
 
 const INITIAL_POSTS = [
   {
@@ -86,7 +85,7 @@ function App() {
         <div>
           <h2
             style={{
-              color: "#2d3748",
+              color: "#ffffff",
               borderBottom: "2px solid #1e40af",
               paddingBottom: "0.5rem",
             }}
