@@ -69,10 +69,20 @@ function PostList({ favorites, onToggleFavorite }) {
       >
         โพสต์ล่าสุด
       </h2>
-
-      <button onClick={fetchPosts} disabled={loading}>
+      <button
+    onClick={fetchPosts}
+    disabled={loading}
+    style={{
+      marginTop: "10px",
+      marginBottom: "10px",
+      padding: "0.4rem 0.8rem",
+      cursor: "pointer",
+    }}
+  >
     {loading ? "กำลังโหลด..." : "🔄 โหลดใหม่"}
   </button>
+
+      
 
 
       <PostCount count={posts.length} />
