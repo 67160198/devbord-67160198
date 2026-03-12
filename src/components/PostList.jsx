@@ -73,8 +73,6 @@ useEffect(() => {
           paddingBottom: "0.5rem",
         }}
       >
-        โพสต์ล่าสุด
-      </h2>
          <h2 style={{ color: "#ffffff", margin: 0 }}>
     โพสต์ล่าสุด
   </h2>
