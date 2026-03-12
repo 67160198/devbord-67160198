@@ -63,32 +63,24 @@ useEffect(() => {
 
   return (
     <div>
-      <h2
-        style={{
-            display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          color: "#ffffff",
-          borderBottom: "2px solid #1e40af",
-          paddingBottom: "0.5rem",
-        }}
-      >
-         <h2 style={{ color: "#ffffff", margin: 0 }}>
+      
+     <div>
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderBottom: "2px solid #1e40af",
+    paddingBottom: "0.5rem",
+  }}
+
+  <h2 style={{ color: "#ffffff", margin: 0 }}>
     โพสต์ล่าสุด
   </h2>
-      <button
-    onClick={fetchPosts}
-    disabled={loading}
-    style={{
-      marginTop: "10px",
-      marginBottom: "10px",
-      padding: "0.4rem 0.8rem",
-      cursor: "pointer",
-    }}
-  >
-    {loading ? "กำลังโหลด..." : "โหลดใหม่"}
-  </button>
 
+  <button onClick={fetchPosts} disabled={loading}>
+    {loading ? "กำลังโหลด..." : "🔄 โหลดใหม่"}
+  </button>
+</div>
       
 
 
