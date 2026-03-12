@@ -65,15 +65,16 @@ useEffect(() => {
     <div>
       <h2
         style={{
-    display: "flex",
+     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-          color: "#ffffff",
-          borderBottom: "2px solid #1e40af",
-          paddingBottom: "0.5rem",
-        }}
-      >
-        โพสต์ล่าสุด
+    borderBottom: "2px solid #1e40af",
+    paddingBottom: "0.5rem",
+  }}
+>
+  <h2 style={{ color: "#ffffff", margin: 0 }}>
+    โพสต์ล่าสุด
+  
       </h2>
       <button
     onClick={fetchPosts}
