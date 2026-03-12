@@ -63,8 +63,7 @@ useEffect(() => {
 
   return (
     <div>
-    
-      <div>
+      <h2
         style={{
             display: "flex",
           justifyContent: "space-between",
@@ -73,10 +72,10 @@ useEffect(() => {
           borderBottom: "2px solid #1e40af",
           paddingBottom: "0.5rem",
         }}
+      >
+        โพสต์ล่าสุด
+      </h2>
       
-         <h2 style={{ color: "#ffffff", margin: 0 }}>
-    โพสต์ล่าสุด
-  </h2>
       <button
     onClick={fetchPosts}
     disabled={loading}
@@ -89,7 +88,7 @@ useEffect(() => {
   >
     {loading ? "กำลังโหลด..." : "โหลดใหม่"}
   </button>
-</div>
+
       
 
 
