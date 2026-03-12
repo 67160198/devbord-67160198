@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import PostCard from "./PostCard";
+
 import PostCount from "./PostCount";
+
 import LoadingSpinner from "./LoadingSpinner";
 
 function PostList({ favorites, onToggleFavorite }) {
@@ -60,7 +62,7 @@ function PostList({ favorites, onToggleFavorite }) {
     <div>
       <h2
         style={{
-          color: "#2d3748",
+          color: "#ffffff",
           borderBottom: "2px solid #1e40af",
           paddingBottom: "0.5rem",
         }}
@@ -68,7 +70,13 @@ function PostList({ favorites, onToggleFavorite }) {
         โพสต์ล่าสุด
       </h2>
 
+      <button onClick={fetchPosts} disabled={loading}>
+    {loading ? "กำลังโหลด..." : "🔄 โหลดใหม่"}
+  </button>
+
+
       <PostCount count={posts.length} />
+
 
       <input
         type="text"
