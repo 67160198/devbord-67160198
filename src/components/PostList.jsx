@@ -65,6 +65,9 @@ useEffect(() => {
     <div>
       <h2
         style={{
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
           color: "#ffffff",
           borderBottom: "2px solid #1e40af",
           paddingBottom: "0.5rem",
@@ -82,7 +85,7 @@ useEffect(() => {
       cursor: "pointer",
     }}
   >
-    {loading ? "กำลังโหลด..." : "🔄 โหลดใหม่"}
+    {loading ? "กำลังโหลด..." : "โหลดใหม่"}
   </button>
 
       
