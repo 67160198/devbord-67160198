@@ -7,6 +7,7 @@ function PostList({ favorites, onToggleFavorite }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
+   const [sortOrder, setSortOrder] = useState("newest");
 
   useEffect(() => {
     async function fetchPosts() {
@@ -27,8 +28,15 @@ function PostList({ favorites, onToggleFavorite }) {
   }, []); // [] = ทำครั้งเดียวตอน component mount
 
   const filtered = posts.filter((post) =>
-    post.title.toLowerCase().includes(search.toLowerCase()),
-  );
+      post.title.toLowerCase().includes(search.toLowerCase())
+   )
+  .sort((a, b) => {
+    if (sortOrder === "newest") {
+      return b.id - a.id;
+    } else {
+      return a.id - b.id;
+    }
+  });
 
   if (loading) return <LoadingSpinner />;
 
@@ -80,6 +88,24 @@ function PostList({ favorites, onToggleFavorite }) {
           ไม่พบโพสต์ที่ค้นหา
         </p>
       )}
+
+
+
+      <div style={{ marginBottom: "1rem" }}>
+  <button onClick={() => setSortOrder("newest")}>
+    ใหม่สุด
+  </button>
+
+  <button
+    style={{ marginLeft: "10px" }}
+    onClick={() => setSortOrder("oldest")}
+  >
+    เก่าสุด
+  </button>
+</div>
+
+
+
 
       {filtered.map((post) => (
         <PostCard
