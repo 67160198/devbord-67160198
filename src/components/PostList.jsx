@@ -12,23 +12,26 @@ function PostList({ favorites, onToggleFavorite }) {
   const [search, setSearch] = useState("");
    const [sortOrder, setSortOrder] = useState("newest");
 
-  useEffect(() => {
-    async function fetchPosts() {
-      try {
-        setLoading(true);
-        setError(null);
-        const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-        if (!res.ok) throw new Error("ดึงข้อมูลไม่สำเร็จ");
-        const data = await res.json();
-        setPosts(data.slice(0, 20)); // เอาแค่ 20 รายการแรก
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchPosts();
-  }, []); // [] = ทำครั้งเดียวตอน component mount
+  async function fetchPosts() {
+  try {
+    setLoading(true);
+    setError(null);
+
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+    if (!res.ok) throw new Error("ดึงข้อมูลไม่สำเร็จ");
+
+    const data = await res.json();
+    setPosts(data.slice(0, 20));
+  } catch (err) {
+    setError(err.message);
+  } finally {
+    setLoading(false);
+  }
+}
+
+useEffect(() => {
+  fetchPosts();
+}, []);
 
   const filtered = posts.filter((post) =>
       post.title.toLowerCase().includes(search.toLowerCase())
