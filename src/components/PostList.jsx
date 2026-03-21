@@ -29,21 +29,17 @@ function PostList({ favorites, onToggleFavorite }) {
   }
 }
 
-useEffect(() => {
-  fetchPosts();
-}, []);
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
-  const filtered = posts
-  .filter((post) =>
-    (post.title || "").toLowerCase().includes(search.toLowerCase())
+  const filtered = posts.filter((post) =>
+    post.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  sort((a, b) => {
-    if (sortOrder === "newest") {
-      return b.id - a.id;
-    } else {
-      return a.id - b.id;
-    }
+  const sorted = [...filtered].sort((a, b) => {
+    if (sortOrder === "Newest") return b.id - a.id;
+    return a.id - b.id;
   });
 
   if (loading) return <LoadingSpinner />;
