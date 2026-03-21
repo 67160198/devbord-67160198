@@ -33,10 +33,12 @@ useEffect(() => {
   fetchPosts();
 }, []);
 
-  const filtered = posts.filter((post) =>
-      post.title.toLowerCase().includes(search.toLowerCase())
-   )
-  .sort((a, b) => {
+  const filtered = posts
+  .filter((post) =>
+    (post.title || "").toLowerCase().includes(search.toLowerCase())
+  );
+
+  sort((a, b) => {
     if (sortOrder === "newest") {
       return b.id - a.id;
     } else {
