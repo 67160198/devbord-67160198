@@ -1,35 +1,36 @@
 import { useState, useEffect } from "react";
 import PostCard from "./PostCard";
-
 import PostCount from "./PostCount";
-
 import LoadingSpinner from "./LoadingSpinner";
+import { useFavorites } from "../context/FavoritesContext"; 
 
-function PostList({ favorites, onToggleFavorite }) {
+function PostList() {
+  // 2. ดึงค่าจาก Context แทนการรับ Props
+  const { favorites, toggleFavorite } = useFavorites();
+
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [search, setSearch] = useState("");
-   const [sortOrder, setSortOrder] = useState("newest");
+  const [sortOrder, setSortOrder] = useState("Newest");
 
-  async function fetchPosts() {
-  try {
-    setLoading(true);
-    setError(null);
-
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-    if (!res.ok) throw new Error("ดึงข้อมูลไม่สำเร็จ");
-
-    const data = await res.json();
-    setPosts(data.slice(0, 20));
-  } catch (err) {
-    setError(err.message);
-  } finally {
-    setLoading(false);
+   async function fetchPosts() {
+    try {
+      setLoading(true);
+      setError(null);
+      const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+      if (!res.ok) throw new Error("ดึงข้อมูลไม่สำเร็จ");
+      const data = await res.json();
+      setPosts(data.slice(0, 20));
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   }
-}
 
-  useEffect(() => {
+
+useEffect(() => {
     fetchPosts();
   }, []);
 
