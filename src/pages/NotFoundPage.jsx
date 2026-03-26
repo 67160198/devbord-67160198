@@ -6,7 +6,7 @@ function NotFoundPage() {
       <h1 style={{ fontSize: "6rem", color: "#e53e3e", margin: "0 0 1rem 0", lineHeight: 1 }}>
         404
       </h1>
-      <h2 style={{ color: "#2d3748", marginBottom: "2rem" }}>
+      <h2 style={{ color: "#f6f7f8", marginBottom: "2rem" }}>
         ไม่พบหน้าที่คุณต้องการ
       </h2>
       
